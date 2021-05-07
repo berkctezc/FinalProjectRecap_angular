@@ -6,7 +6,7 @@
 
 ## Gün 17
 
-### Ödev 1
+### Ödev 1  ✔
 
 ```csharp
 /*
@@ -23,7 +23,7 @@ Kodlarınızı githuba aktarıp paylaşınız.
 */
 ```
 
-[Commit]()
+[Commit](https://github.com/berkctezc/FinalProjectRecap_angular/commit/4340a33915ed22d5a882239c2a48274cc10e5048)
 
 ## Gün 18
 

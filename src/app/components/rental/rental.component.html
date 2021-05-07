@@ -1,0 +1,29 @@
+<div *ngIf="dataLoaded == false" class="spinner-border" role="status">
+    <span class="visually-hidden">Loading...</span>
+  </div>
+  <h5 class="text-center">RENTAL LIST</h5>
+  <table class="table">
+    <thead>
+      <tr>
+          <!--RENTAL DTO ÇALIŞMIYOR 
+            İDARETEN NORMAL RENTAL KULLANILMIŞTIR
+            SONRADAN DÜZELTİLECEKTİR
+        -->
+        <th scope="col">#</th>        
+        <th scope="col">CarId</th>
+        <th scope="col">CustomerId</th>
+        <th scope="col">Rent Date</th>
+        <th scope="col">Return Date</th>
+
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let rental of rentals">
+        <th scope="row">{{ rental.id }}</th>
+        <td>{{ rental.carId }}</td>
+        <td>{{ rental.customerId }}</td>
+        <td>{{ rental.rentDate }}</td>
+        <td>{{ rental.returnDate }}</td>
+      </tr>
+    </tbody>
+  </table>

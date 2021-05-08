@@ -11,22 +11,35 @@ import { ColorService } from 'src/app/services/color.service';
 export class ColorComponent implements OnInit {
 
   colors: Color[] = [];
+  currentColor: Color;
   dataLoaded = false;
 
   constructor(
-    private colorService:ColorService, 
-    private activatedRoute:ActivatedRoute
-    ) {}
+    private colorService: ColorService,
+    private activatedRoute: ActivatedRoute
+  ) { }
 
 
   ngOnInit(): void {
-      this.getColors()
+    this.getColors()
   }
 
   getColors() {
-    this.colorService.getColors().subscribe(response=>{
+    this.colorService.getColors().subscribe(response => {
       this.colors = response.data
       this.dataLoaded = true;
-    }) 
+    })
+  }
+
+  setCurrentColor(color: Color) {
+    this.currentColor = color;
+  }
+
+  getCurrentColor(color: Color) {
+    if (color == this.currentColor) {
+      return "list-group-item list-group-item-action list-group-item-info"
+    } else {
+      return "list-group-item list-group-item-action";
+    }
   }
 }

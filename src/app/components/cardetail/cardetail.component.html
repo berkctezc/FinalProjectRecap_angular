@@ -1,0 +1,44 @@
+<div *ngFor="let car of carDetails" class="row mt-3">
+    <div class="col-md-7">
+      <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img *ngFor="let image of images" src="https://localhost:44307/api/carimages/getall{{image.imagePath}}"
+              class="d-block myimg" alt="...">
+          </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls"
+          data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls"
+          data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+    </div>
+
+    <div class="col-md-5">
+      <div class="card">
+        <div class="card-body">
+          <h4 class="card-title">{{car.description}}</h4>
+          <p><strong>Marka : </strong>{{car.brandName}}</p>
+          <p><strong>Model Yılı : </strong>{{car.modelYear}}</p>
+          <p><strong>Renk : </strong>{{car.colorName}}</p>
+          <p><strong>Günlük Fiyat : </strong>{{car.dailyPrice}} TL</p>
+          <button class="btn btn-primary float-end mt-4">Kirala</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-12 my-5">
+      <div class="card">
+        <div class="card-body">
+          <strong>Açıklama</strong>
+          <p>{{car.description}}</p>
+        </div>
+      </div>
+    </div>
+  </div> 

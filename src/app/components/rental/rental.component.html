@@ -2,16 +2,13 @@
     <span class="visually-hidden">Loading...</span>
   </div>
   <h5 class="text-center">RENTAL LIST</h5>
-  <table class="table">
+  <table class="table table-hover">
     <thead>
       <tr>
-          <!--RENTAL DTO ÇALIŞMIYOR 
-            İDARETEN NORMAL RENTAL KULLANILMIŞTIR
-            SONRADAN DÜZELTİLECEKTİR
-        -->
-        <th scope="col">#</th>        
-        <th scope="col">CarId</th>
-        <th scope="col">CustomerId</th>
+        <th scope="col">#</th> 
+        <th scope="col">First Name</th>
+        <th scope="col">Last Name</th>   
+        <th scope="col">Brand Name</th>
         <th scope="col">Rent Date</th>
         <th scope="col">Return Date</th>
 
@@ -20,8 +17,9 @@
     <tbody>
       <tr *ngFor="let rental of rentals">
         <th scope="row">{{ rental.id }}</th>
-        <td>{{ rental.carId }}</td>
-        <td>{{ rental.customerId }}</td>
+        <td>{{ rental.firstName }}</td>
+        <td>{{ rental.lastName }}</td>
+        <td>{{ rental.brandName }}</td>
         <td>{{ rental.rentDate }}</td>
         <td>{{ rental.returnDate }}</td>
       </tr>

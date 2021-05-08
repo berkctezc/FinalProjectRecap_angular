@@ -1,12 +1,8 @@
 export interface Rental{
     id:number;
-    // brandName:string;
-    // firstName:string;
-    // lastName:string;
+    brandName:string;
+    firstName:string;
+    lastName:string;
     rentDate:Date;
     returnDate:Date;
-    
-    carId:number;
-    customerId:number;
-
 }

@@ -12,23 +12,23 @@ export class RentalComponent implements OnInit {
 
   rentals: Rental[] = [];
   dataLoaded = false;
+  filterTextRental = "";
 
   constructor(
-    private rentalService:RentalService, 
-    private activatedRoute:ActivatedRoute
-    ) {}
+    private rentalService: RentalService,
+    private activatedRoute: ActivatedRoute
+  ) { }
 
 
   ngOnInit(): void {
-      this.getRentals();
+    this.getRentals();
   }
 
   getRentals() {
-    this.rentalService.getRentals().subscribe(response=>{
+    this.rentalService.getRentals().subscribe(response => {
       this.rentals = response.data
       console.log(response.data);
-      
       this.dataLoaded = true;
-    }) 
+    })
   }
-} 
+}

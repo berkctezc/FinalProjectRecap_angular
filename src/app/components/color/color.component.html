@@ -1,18 +1,20 @@
-<div
-  *ngIf="dataLoaded == false"
-  class="spinner-border text-warning"
-  role="status"
->
+<div *ngIf="dataLoaded == false" class="spinner-border text-warning" role="status">
   <span class="visually-hidden">Loading...</span>
 </div>
+<div class="mb-3">
+  <input type="text" [(ngModel)]="filterText" class="form-control" id="filterTextColor"
+    placeholder="Search Color Name" />
+</div>
+<div *ngIf="filterText" class="alert alert-info">
+  <b>You are looking for:</b> {{ filterText }}
+</div>
+
 <ul class="list-group list-group-flush">
-  <li class="list-group-item strong h6 text-center">Colors</li>
-  <li
-    (click)="setCurrentColor(color)"
-    *ngFor="let color of colors"
-    routerLink="cars/color/{{ color.id }}"
-    [class]="getCurrentColor(color)"
-  >
+  <li routerLink="/cars" class="list-group-item strong h6 text-center">
+    All Colors
+  </li>
+  <li (click)="setCurrentColor(color)" *ngFor="let color of colors | filterColor: filterText"
+    routerLink="/cars/color/{{ color.id }}" [class]="getCurrentColor(color)">
     {{ color.name }}
   </li>
 </ul>

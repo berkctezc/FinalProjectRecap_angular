@@ -9,44 +9,33 @@
 <!-- 
 image problemi sonradan düzeltilmek üzere yarım bırakılmıştır 
 -->
-
+<br>
 <div class="row">
-  <div *ngFor="let car of cars" class="card p-4 col-md-4" style="width: 18rem">
+  <div class="mb-3">
+    <input
+      type="text"
+      [(ngModel)]="filterText"
+      class="form-control"
+      id="filterText"
+      placeholder="Search vehicle"
+    />
+  </div>
+  <div *ngIf="filterText" class="alert alert-info">
+    <b>Searching For:</b> {{ filterText }}
+  </div>
+  <div *ngFor="let car of cars | filter: filterText" class="card col-md-4" style="width: 14rem; height: 13rem; margin: 5px;">
     <!-- <img src="{{images.imagePath}}"  class="card-img-top" alt="..." /> -->
-    <div class="card-body">
+    <div class="card-body styl">
       <h5 class="card-title">{{ car.description }}</h5>
+      <p class="card-text">{{ car.brandName |uppercase}} | {{ car.modelYear }}</p>
       <p class="card-text">
-        {{ car.brandName }} | {{ car.modelYear }}
-        <a href="car/detail/{{ car.id }}" class="btn btn-warning float-end"
-          >Detay</a
-        >
+        {{ car.dailyPrice }} ₺ | <span class="fst-italic">KDV dahil:</span>
+        {{ car.modelYear | vatAdded: 18 }} ₺
       </p>
+      <a (click)="addToCart(car)" class="btn btn-success float-end ms-2">
+        Kirala
+      </a>
+      <a href="car/detail/{{ car.id }}" class="btn btn-info float-end">Detay</a>
     </div>
   </div>
 </div>
-
-<!-- 
-  <h4 class="text-center">Car List</h4>
-<table class="table table-hover border border-warning">
-  <thead>
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">Description</th>
-      <th scope="col">Brand</th>
-      <th scope="col">Year</th>
-      <th scope="col">Color</th>
-      <th scope="col">Daily Price</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let car of cars">
-      <th scope="row">{{ car.id }}</th>
-      <td>{{ car.description }}</td>
-      <td>{{ car.brandName }}</td>
-      <td>{{ car.modelYear }}</td>
-      <td>{{ car.colorName }}</td>
-      <td>{{ car.dailyPrice }}</td>
-    </tr>
-  </tbody>
-</table> 
--->

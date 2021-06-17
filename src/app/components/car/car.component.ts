@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { CarDetail } from 'src/app/models/cardetail';
-import { CarService } from 'src/app/services/car.service';
+import { CartService } from 'src/app/services/cart.service';
 import { CardetailService } from 'src/app/services/cardetail.service';
 import { ImageService } from 'src/app/services/image.service';
 import { Image } from 'src/app/models/image';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-car',
@@ -14,14 +15,16 @@ import { Image } from 'src/app/models/image';
 export class CarComponent implements OnInit {
 
   cars: CarDetail[] = [];
-  images: Image[]=[];
+  images: Image[] = [];
   dataLoaded = false;
+  filterText = "";
 
   constructor(
-    private carService: CarService,
+    private cartService: CartService,
     private activatedRoute: ActivatedRoute,
     private cardetailService: CardetailService,
-    private imageService: ImageService
+    private imageService: ImageService,
+    private toastrService: ToastrService
   ) { }
 
 
@@ -73,5 +76,14 @@ export class CarComponent implements OnInit {
     this.imageService.getImagesByCarId(this.activatedRoute.snapshot.params["id"]).subscribe(response => {
       this.images = response.data;
     })
+  }
+
+  addToCart(car: CarDetail) {
+    if (car.id === 3) {
+      this.toastrService.error(car.description, "Error")
+    } else {
+      this.toastrService.success(car.description, "Added")
+      this.cartService.addToCart(car);
+    }
   }
 }

@@ -1,27 +1,43 @@
-<div *ngIf="dataLoaded == false" class="spinner-border" role="status">
-    <span class="visually-hidden">Loading...</span>
-  </div>
-  <h5 class="text-center">RENTAL LIST</h5>
-  <table class="table table-hover">
-    <thead>
-      <tr>
-        <th scope="col">#</th> 
-        <th scope="col">First Name</th>
-        <th scope="col">Last Name</th>   
-        <th scope="col">Brand Name</th>
-        <th scope="col">Rent Date</th>
-        <th scope="col">Return Date</th>
+<div class="mb-3">
+  <input
+    type="text"
+    [(ngModel)]="filterTextRental"
+    class="form-control"
+    id="filterTextRental"
+    placeholder="Search in Rental Brands"
+  />
+</div>
+<div *ngIf="filterTextRental" class="alert alert-secondary">
+  <b>Searching For:</b> {{ filterTextRental }}
+</div>
 
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let rental of rentals">
-        <th scope="row">{{ rental.id }}</th>
-        <td>{{ rental.firstName }}</td>
-        <td>{{ rental.lastName }}</td>
-        <td>{{ rental.brandName }}</td>
-        <td>{{ rental.rentDate }}</td>
-        <td>{{ rental.returnDate }}</td>
-      </tr>
-    </tbody>
-  </table>
+<h5 class="text-center">RENTAL LIST</h5>
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">First Name</th>
+      <th scope="col">Last Name</th>
+      <th scope="col">Brand Name</th>
+      <th scope="col">Rent Date</th>
+      <th scope="col">Return Date</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let rental of rentals | filterRental: filterTextRental">
+      <th scope="row">{{ rental.id }}</th>
+      <td>{{ rental.firstName }}</td>
+      <td>{{ rental.lastName }}</td>
+      <td>{{ rental.brandName }}</td>
+      <td>{{ rental.rentDate }}</td>
+      <td>{{ rental.returnDate }}</td>
+    </tr>
+  </tbody>
+</table>
+<div
+  *ngIf="dataLoaded == false"
+  class="spinner-border text-warning"
+  role="status"
+>
+  <span class="visually-hidden">Loading...</span>
+</div>

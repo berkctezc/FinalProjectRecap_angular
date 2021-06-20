@@ -1,12 +1,12 @@
 # Yazılımcı Geliştirici Yetiştirme Kampı Ödev Projesi - Angular Frontend Client
 
-------
+---
 
 [**.Net API**](https://github.com/berkctezc/FinalProjectRecap)
 
 ## Gün 17
 
-### Ödev 1  ✔
+### Ödev 1 ✔
 
 ```csharp
 /*
@@ -64,7 +64,7 @@ Size güveniyorum. Yapacaksınız.
 */
 ```
 
-[Commit]()
+[Commit](https://github.com/berkctezc/FinalProjectRecap_angular/commit/a253cf8dc1a54d4891cc9e686714cba8d55d1f7e)
 
 ## Gün 20
 

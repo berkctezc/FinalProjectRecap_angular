@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
 import { Customer } from 'src/app/models/customer';
 import { CustomerService } from 'src/app/services/customer.service';
 @Component({
@@ -14,8 +13,7 @@ export class CustomerComponent implements OnInit {
   filterTextCustomer = "";
 
   constructor(
-    private customerService: CustomerService,
-    private activatedRoute: ActivatedRoute
+    private customerService: CustomerService
   ) { }
 
 

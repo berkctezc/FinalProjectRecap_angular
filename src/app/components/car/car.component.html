@@ -5,11 +5,7 @@
 >
   <span class="visually-hidden">Loading...</span>
 </div>
-
-<!-- 
-image problemi sonradan düzeltilmek üzere yarım bırakılmıştır 
--->
-<br>
+<br />
 <div class="row">
   <div class="mb-3">
     <input
@@ -23,11 +19,17 @@ image problemi sonradan düzeltilmek üzere yarım bırakılmıştır
   <div *ngIf="filterText" class="alert alert-info">
     <b>Searching For:</b> {{ filterText }}
   </div>
-  <div *ngFor="let car of cars | filter: filterText" class="card col-md-4" style="width: 14rem; height: 13rem; margin: 5px;">
-    <!-- <img src="{{images.imagePath}}"  class="card-img-top" alt="..." /> -->
-    <div class="card-body styl">
+  <div
+    *ngFor="let car of cars | filter: filterText"
+    class="card col-md-4"
+    style="width: 14rem; height: auto; margin: 5px"
+  >
+    <img [src]="SetImage(car)" class="card-img-top" alt="carimg" />
+    <div class="card-body">
       <h5 class="card-title">{{ car.description }}</h5>
-      <p class="card-text">{{ car.brandName |uppercase}} | {{ car.modelYear }}</p>
+      <p class="card-text">
+        {{ car.brandName | uppercase }} | {{ car.modelYear }}
+      </p>
       <p class="card-text">
         {{ car.dailyPrice }} ₺ | <span class="fst-italic">KDV dahil:</span>
         {{ car.modelYear | vatAdded: 18 }} ₺

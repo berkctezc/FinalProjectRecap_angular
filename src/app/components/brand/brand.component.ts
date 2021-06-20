@@ -17,7 +17,6 @@ export class BrandComponent implements OnInit {
 
   constructor(
     private brandService: BrandService,
-    private activatedRoute: ActivatedRoute
   ) { }
 
   ngOnInit(): void {

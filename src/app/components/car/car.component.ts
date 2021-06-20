@@ -15,7 +15,6 @@ import { ToastrService } from 'ngx-toastr';
 export class CarComponent implements OnInit {
 
   cars: CarDetail[] = [];
-  images: Image[] = [];
   dataLoaded = false;
   filterText = "";
 
@@ -23,7 +22,6 @@ export class CarComponent implements OnInit {
     private cartService: CartService,
     private activatedRoute: ActivatedRoute,
     private cardetailService: CardetailService,
-    private imageService: ImageService,
     private toastrService: ToastrService
   ) { }
 
@@ -31,7 +29,7 @@ export class CarComponent implements OnInit {
   ngOnInit(): void {
     this.activatedRoute.params.subscribe(params => {
       if (params["brandId"]) {
-        this.getCarDetailsByBrand(params["brandId"]);
+        this.getCarDetailsByBrand(params["brandId"])
       } else if (params["colorId"]) {
         this.getCarDetailsByColor(params["colorId"]);
       } else {
@@ -42,14 +40,14 @@ export class CarComponent implements OnInit {
 
   getCarDetails() {
     this.cardetailService.getCarDetails().subscribe(response => {
-      this.cars = response.data
+      this.cars = response.data;
       this.dataLoaded = true;
     })
   }
 
   getCarDetailsByColor(colorId: number) {
-    this.cardetailService.getCarDetailsByColor(colorId).subscribe(response => {
-      this.cars = response.data
+    this.cardetailService.getCarDetailByColor(colorId).subscribe(response => {
+      this.cars = response.data;
       this.dataLoaded = true;
     })
   }
@@ -62,20 +60,14 @@ export class CarComponent implements OnInit {
     })
   }
 
-  path = "https://localhost:44307/api/carimages/getall";
+  path = "https://localhost:44307/uploads/";
 
-  SetImage(Car: CarDetail) {
-    if (Car.imagePath.length > 0) {
-      return `${this.path}${Car.imagePath}`;
+  SetImage(car: CarDetail) {
+    if (car.imagePath.length > 0) {
+      return `${this.path}${car.imagePath}`;
     } else {
-      return "src/app/components/img/default.jpg";
+      return `${this.path}logo.jpg`;
     }
-  }
-
-  getImagesByCarId() {
-    this.imageService.getImagesByCarId(this.activatedRoute.snapshot.params["id"]).subscribe(response => {
-      this.images = response.data;
-    })
   }
 
   addToCart(car: CarDetail) {

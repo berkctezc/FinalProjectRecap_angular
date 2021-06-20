@@ -17,23 +17,24 @@ export class CardetailComponent implements OnInit {
   dataLoaded = false;
 
   constructor(
-    private cardetailService:CardetailService,
-    private imageService:ImageService,
-    private activatedRoute:ActivatedRoute
+    private cardetailService: CardetailService,
+    private imageService: ImageService,
+    private activatedRoute: ActivatedRoute
   ) { }
 
   ngOnInit(): void {
-    this.activatedRoute.params.subscribe(params=>{
-      if (params["carId"]){
+    this.activatedRoute.params.subscribe(params => {
+      if (params["carId"]) {
         this.getCarDetailByCarId(params["carId"])
         this.getImagesByCarId();
       }
     })
   }
 
-  getCarDetailByCarId(carId:number){
-    this.cardetailService.getCarDetailByCarId(carId).subscribe(response=>{
-      this.carDetails=response.data;
+  getCarDetailByCarId(carId: number) {
+    this.cardetailService.getCarDetailByCarId(carId).subscribe(response => {
+      console.log(response);
+      this.carDetails = response.data;
     })
   }
 
@@ -42,6 +43,4 @@ export class CardetailComponent implements OnInit {
       this.images = response.data;
     })
   }
-
-
 }
